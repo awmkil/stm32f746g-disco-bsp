@@ -1,6 +1,18 @@
 [package]
-name = "test-stm32"
+name = "stm32f746g-disco-bsp"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+cortex-m = "0.7.7"
+embedded-graphics = "0.8.1"
+panic-halt = "0.2.0"
+panic-semihosting = "0.6.0"
+
+[dependencies.cortex-m-rt]
+version = "0.7.4"
+features = ["device"]
+
+[dependencies.stm32f7xx-hal]
+version = "0.7.0"
+features = ["stm32f767", "rt"]
