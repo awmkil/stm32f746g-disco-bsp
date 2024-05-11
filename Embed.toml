@@ -1,0 +1,5 @@
+[default.general]
+chip = "STM32F746NGHx"
+
+[default.rtt]
+enabled = true

@@ -18,6 +18,9 @@ use stm32f7xx_hal::{
     rcc::{HSEClock, HSEClockMode},
 };
 
+const HSE_CLOCK_HZ: u32 = 25_000_000;
+const SYS_CLOCK_HZ: u32 = 216_000_000;
+
 const STEPS: i32 = 10;
 
 #[entry]
@@ -37,7 +40,6 @@ fn main() -> ! {
         gpiog.pg12.into_alternate::<9>().set_speed(Speed::VeryHigh), // LTCD_B4
         gpioi.pi9.into_alternate::<14>().set_speed(Speed::VeryHigh), // LTCD_VSYNC
         gpioi.pi10.into_alternate::<14>().set_speed(Speed::VeryHigh), // LTCD_HSYNC
-        gpioi.pi13.into_alternate::<14>().set_speed(Speed::VeryHigh),
         gpioi.pi14.into_alternate::<14>().set_speed(Speed::VeryHigh), // LTCD_CLK
         gpioi.pi15.into_alternate::<14>().set_speed(Speed::VeryHigh), // LTCD_R0
         gpioj.pj0.into_alternate::<14>().set_speed(Speed::VeryHigh),  // LTCD_R1
@@ -79,10 +81,11 @@ fn main() -> ! {
     let rcc = dp.RCC.constrain();
     let clocks = rcc
         .cfgr
-        .hse(HSEClock::new(25_000_000.Hz(), HSEClockMode::Bypass))
-        .sysclk(216_000_000.Hz())
-        .hclk(216_000_000.Hz())
+        .hse(HSEClock::new(HSE_CLOCK_HZ.Hz(), HSEClockMode::Bypass))
+        .sysclk(SYS_CLOCK_HZ.Hz())
+        .hclk(SYS_CLOCK_HZ.Hz())
         .freeze();
+
     let mut delay = cp.SYST.delay(&clocks);
 
     lcd_on_pin.set_high();

@@ -5,9 +5,11 @@ edition = "2021"
 
 [dependencies]
 cortex-m = "0.7.7"
+cortex-m-semihosting = "0.5.0"
 embedded-graphics = "0.8.1"
 panic-halt = "0.2.0"
 panic-semihosting = "0.6.0"
+wm8994 = "0.1.0"
 
 [dependencies.cortex-m-rt]
 version = "0.7.4"

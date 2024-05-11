@@ -329,10 +329,12 @@ version = "0.1.0"
 dependencies = [
  "cortex-m",
  "cortex-m-rt",
+ "cortex-m-semihosting",
  "embedded-graphics",
  "panic-halt",
  "panic-semihosting",
  "stm32f7xx-hal",
+ "wm8994",
 ]
 
 [[package]]
@@ -414,4 +416,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "de437e2a6208b014ab52972a27e59b33fa2920d3e00fe05026167a1c509d19cc"
 dependencies = [
  "vcell",
+]
+
+[[package]]
+name = "wm8994"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "daeaec8f5e08f9c067d64a82ad474e69fea8c5040a085c940363cd5cf8a215ca"
+dependencies = [
+ "embedded-hal",
 ]
